@@ -1,21 +1,24 @@
-package TiposServer.resources;
-
-import TiposServer.db.MySQL;
-import com.sun.tools.internal.xjc.reader.xmlschema.bindinfo.BIConversion;
-import sun.security.krb5.Credentials;
+package sk.akademiasovy.tipos.server.resources;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import sk.akademiasovy.tipos.server.Credentials;
+import sk.akademiasovy.tipos.server.Registration;
+import sk.akademiasovy.tipos.server.User;
+import sk.akademiasovy.tipos.server.db.MySQL;
+
 @Path("/auth")
 public class Login {
+
     @POST
     @Path("/login")
     @Produces(MediaType.APPLICATION_JSON)
     public String checkCredentials(Credentials credential){
         System.out.println(credential.getUsername());
         MySQL mySQL = new MySQL();
-        BIConversion.User user=mySQL.getUser(credential.username, credential.password);
+        User user=mySQL.getUser(credential.username, credential.password);
         if(user==null){
             return "{}";
         }
@@ -39,4 +42,23 @@ public class Login {
         mySQL.logout( token);
         return "{}";
     }
+
+    @POST
+    @Path("/registration")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String  createNewUser (Registration registration)
+    {
+        MySQL mySQL = new MySQL();
+        boolean exist = mySQL.chechEmailOrLoginExist(registration.login.trim(),registration.email.trim());
+        if(exist) {
+            return "{\"error\":\"User or email address already exists !\"}";
+        }else{
+            System.out.println("go on with registration");
+            mySQL.insertNewUserIntoDb(registration);
+        }
+
+        return "{}";
+
+    }
+
 }

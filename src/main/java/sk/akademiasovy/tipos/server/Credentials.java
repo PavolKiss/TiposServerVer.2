@@ -1,4 +1,4 @@
-package TiposServer;
+package sk.akademiasovy.tipos.server;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

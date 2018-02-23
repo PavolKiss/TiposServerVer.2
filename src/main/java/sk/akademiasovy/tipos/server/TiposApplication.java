@@ -1,19 +1,19 @@
-package TiposServer;
+package sk.akademiasovy.tipos.server;
 
-import TiposServer.resources.Login;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 import org.eclipse.jetty.servlets.CrossOriginFilter;
+import sk.akademiasovy.tipos.server.resources.Login;
 
 import javax.servlet.DispatcherType;
 import javax.servlet.FilterRegistration;
 import java.util.EnumSet;
 
-public class TiposServerApplication extends Application<TiposServerConfiguration> {
+public class TiposApplication extends Application<TiposConfiguration> {
 
     public static void main(final String[] args) throws Exception {
-        new TiposServerApplication()Application().run(args);
+        new TiposApplication().run(args);
     }
 
     @Override
@@ -22,12 +22,12 @@ public class TiposServerApplication extends Application<TiposServerConfiguration
     }
 
     @Override
-    public void initialize(final Bootstrap<TiposServerApplication> bootstrap) {
+    public void initialize(final Bootstrap<TiposConfiguration> bootstrap) {
         // TODO: application initialization
     }
 
     @Override
-    public void run(final TiposServerApplication configuration,
+    public void run(final TiposConfiguration configuration,
                     final Environment environment) {
         // TODO: implement application
         environment.jersey().register( new Login() );
@@ -42,4 +42,5 @@ public class TiposServerApplication extends Application<TiposServerConfiguration
         // Add URL mapping
         cors.addMappingForUrlPatterns(EnumSet.allOf(DispatcherType.class), true, "/*");
     }
+
 }
