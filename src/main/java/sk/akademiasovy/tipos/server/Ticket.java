@@ -2,7 +2,7 @@ package sk.akademiasovy.tipos.server;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Ticket extends sun.security.krb5.internal.Ticket {
+public class Ticket {
     @JsonProperty("bet1")
     public int bet1;
     @JsonProperty("bet2")
@@ -17,4 +17,12 @@ public class Ticket extends sun.security.krb5.internal.Ticket {
     public String token;
     @JsonProperty("login")
     public String login;
+
+    public Ticket(int bet1, int bet2, int bet3, int bet4, int bet5) {
+        this.bet1 = bet1;
+        this.bet2 = bet2;
+        this.bet3 = bet3;
+        this.bet4 = bet4;
+        this.bet5 = bet5;
+    }
 }
