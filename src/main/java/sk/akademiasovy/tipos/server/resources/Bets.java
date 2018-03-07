@@ -31,7 +31,6 @@ public class Bets {
             System.out.println("Invalid username or token");
             return Response.status(401).build();
         }
-        // return Response.status(201).build();
     }
 
     @POST

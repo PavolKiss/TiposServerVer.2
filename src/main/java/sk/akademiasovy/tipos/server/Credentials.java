@@ -9,6 +9,9 @@ public class Credentials {
     @JsonProperty("password")
     public String password;
 
+    @JsonProperty("token")
+    public String token;
+
 
     public String getUsername() {
         return username;
