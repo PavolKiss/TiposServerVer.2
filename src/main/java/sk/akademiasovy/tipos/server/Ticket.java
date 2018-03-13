@@ -3,7 +3,7 @@ package sk.akademiasovy.tipos.server;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Ticket {
-    @JsonProperty("bet1")
+    @JsonProperty("bet1") //json property - aby sa prijmalo z postu
     public int bet1;
     @JsonProperty("bet2")
     public int bet2;

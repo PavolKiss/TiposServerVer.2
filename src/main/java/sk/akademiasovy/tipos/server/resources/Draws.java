@@ -16,17 +16,18 @@ public class Draws {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getDrawNumbers(@PathParam("id")  int id){
+    public Response getDrawNumbers(@PathParam("id") int id) {   //prijme tiket
         MySQL mySQL = new MySQL();
         System.out.println(id);
         Draw_Number draw_number = mySQL.getDrawNumbers(id);
-        if(draw_number!=null){
-            String result="{\"bet1 \":"+draw_number.bet1+", ";
-            result+="\"bet2 \":"+draw_number.bet2+", ";
-            result+="\"bet3 \":"+draw_number.bet3+", ";
-            result+="\"bet4 \":"+draw_number.bet4+", ";
-            result+="\"bet5 \":"+draw_number.bet5+"} ";
+        if (draw_number != null) {
+            String result = "{\"bet1 \":" + draw_number.bet1 + ", ";
+            result += "\"bet2 \":" + draw_number.bet2 + ", ";
+            result += "\"bet3 \":" + draw_number.bet3 + ", ";
+            result += "\"bet4 \":" + draw_number.bet4 + ", ";
+            result += "\"bet5 \":" + draw_number.bet5 + "} ";
             return Response.ok(result).build();
         }
-        return  Response.status(Response.Status.NOT_FOUND).build();
+        return Response.status(Response.Status.NOT_FOUND).build();
     }
+}

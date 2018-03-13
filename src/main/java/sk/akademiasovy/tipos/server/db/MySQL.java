@@ -218,7 +218,7 @@ public class MySQL {
                     +" INNER JOIN users ON users.id=bets.idu "
                     +" INNER JOIN bet_details ON bets.id=bet_details.idb "
                     +" WHERE login like ? AND draw_id IS NULL";
-            PreparedStatement ps = conn.prepareStatement(query);
+            PreparedStatement ps = conn.prepareStatement(query); //posiela sa query do DB
 
             ps.setString(1,username);
             System.out.println(ps);

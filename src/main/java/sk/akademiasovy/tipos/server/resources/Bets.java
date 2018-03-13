@@ -42,7 +42,7 @@ public class Bets {
         boolean ret2 = mySQL.checkToken(credentials.token);
         if(ret1 && ret2) {
             List<Ticket> tickets;
-            tickets= mySQL.getActualTickets(credentials.username);
+            tickets = mySQL.getActualTickets(credentials.username);
             Response.ok().build();
         }
         else return Response.status(401).build();

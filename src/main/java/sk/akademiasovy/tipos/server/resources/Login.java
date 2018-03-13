@@ -50,7 +50,7 @@ public class Login {
         MySQL mySQL = new MySQL();
         boolean exist = mySQL.checkIfEmailOrLoginExist(registration.login.trim(),registration.email.trim());
         if(exist) {
-            return Response.status(406).build()
+            return Response.status(406).build();
         }else{
             System.out.println("go on with registration");
             mySQL.insertNewUserIntoDb(registration);
